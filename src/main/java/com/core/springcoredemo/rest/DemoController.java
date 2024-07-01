@@ -9,14 +9,11 @@ import com.core.springcoredemo.common.Coach;
 @RestController
 public class DemoController {
     private Coach myCoach;
-    private Coach anotherCoach;
 
     // Constructor Injection
     public DemoController(
-            @Qualifier("trackCoach") Coach myCoach,
-            @Qualifier("trackCoach") Coach anotherCoach) {
+            @Qualifier("swimCoach") Coach myCoach) {
         this.myCoach = myCoach;
-        this.anotherCoach = anotherCoach;
     }
 
     // Setter Injection
@@ -30,9 +27,5 @@ public class DemoController {
         return myCoach.getDailyWorkout();
     }
 
-    @GetMapping("/check")
-    public String check() {
-        return "Comparing beans: " + (myCoach == anotherCoach);
-    }
 
 }
